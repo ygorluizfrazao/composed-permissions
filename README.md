@@ -107,7 +107,170 @@ permissionDialogProperties = createPermissionDialogProperties(
 
 Here is an app of notes which needs permission to record audio and location in very specific place.
 
+<img src="example/images/example.gif" alt="A notes app demo" style="width:20%; height:20%">
 
+1. Create and remember your `UserDrivenAskingStrategy`:
+```kotlin
+    var canStart by rememberSaveable {
+        mutableStateOf(false)
+    }
+
+    val userDrivenAskingStrategy =
+        rememberUserDrivenAskingStrategy(
+            type = AskingStrategy.STOP_ASKING_ON_USER_DENIAL,
+            permissions = listOf(
+                Manifest.permission.RECORD_AUDIO,
+                Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ),
+            canStart = { canStart }
+        )
+```
+**IMPORTANT NOTE**
+The `canStart: () -> Boolean` param tells the `UserDrivenAskingStrategy` when it should start asking. It is `{true}` by default, which means, it will start the process as soon as the composition happens. In the above example, we want to control the start of the flow, so, we pass our own implementation.
+
+2. Call `WithPermission` "with" the controls that depends on specific permissions.
+
+```kotlin
+    NotesList(...) {
+        Row(...) {
+            WithPermission(
+                userDrivenAskingStrategy = userDrivenAskingStrategy,
+                permissionDialogProperties = createPermissionDialogProperties(
+                    onGrantButtonClicked = { _, _ ->
+                        context.goToAppSettings()
+                        canStart = false
+                    },
+                ),
+                initialStateContent = {
+                    IconButton(onClick = { canStart = true }) {
+                        IconResource.fromImageVector(
+                            Icons.Default.Warning,
+                            ""
+                        ).ComposeIcon()
+                    }
+                }) { _, permissionMap ->
+
+                val permissionsMapState = remember {
+                    mutableStateOf(permissionMap)
+                }
+
+                val grantedPermissions = remember {
+                    derivedStateOf {
+                        permissionsMapState.value.filter { (_, granted) -> granted }
+                    }
+                }
+
+                val deniedPermissions = remember {
+                    derivedStateOf {
+                        permissionsMapState.value.filter { (_, granted) -> !granted }
+                    }
+                }
+
+                val coroutineScope = rememberCoroutineScope()
+                var showPopup by remember {
+                    mutableStateOf(false)
+                }
+
+                if (deniedPermissions.value.isEmpty()) {
+                    IconButton(onClick = {
+                        showPopup = true
+                        coroutineScope.launch {
+                            Toast.makeText(
+                                context,
+                                "Call a fancy ViewModel Action!",
+                                Toast.LENGTH_SHORT
+                            )
+                                .show()
+                        }
+                    }) {
+                        IconResource.fromImageVector(
+                            Icons.Default.CheckCircle,
+                            ""
+                        ).ComposeIcon()
+                    }
+                } else {
+                    IconButton(onClick = {
+                        showPopup = true
+                        coroutineScope.launch {
+                            Toast.makeText(
+                                context,
+                                "Granted: ${grantedPermissions.value}\nDenied: ${deniedPermissions.value}",
+                                Toast.LENGTH_SHORT
+                            )
+                                .show()
+                        }
+                    }) {
+                        IconResource.fromImageVector(
+                            Icons.Default.Cancel,
+                            ""
+                        ).ComposeIcon()
+                    }
+                }
+
+                if (showPopup) {
+                    Popup(
+                        properties = PopupProperties(
+                            dismissOnBackPress = true,
+                            dismissOnClickOutside = true,
+                            focusable = true
+                        ),
+                        onDismissRequest = { showPopup = false },
+                        popupPositionProvider = object : PopupPositionProvider {
+                            override fun calculatePosition(
+                                anchorBounds: IntRect,
+                                windowSize: IntSize,
+                                layoutDirection: LayoutDirection,
+                                popupContentSize: IntSize
+                            ): IntOffset {
+                                return IntOffset(
+                                    (windowSize.width - popupContentSize.width) / 2,
+                                    (windowSize.height - popupContentSize.height) / 2
+                                )
+                            }
+                        }) {
+                        Surface(
+                            border = BorderStroke(1.dp, LocalContentColor.current),
+                            shape = MaterialTheme.shapes.medium
+                        ) {
+                            Column(
+                                modifier = Modifier.padding(MaterialTheme.spacing.medium),
+                                verticalArrangement = Arrangement.spacedBy(MaterialTheme.spacing.medium)
+                            ) {
+                                Text(
+                                    text = "Granted Permissions: \n${
+                                        grantedPermissions.value.map { it.key.toHumanLanguage() + "\n" }
+                                            .joinToString(separator = "")
+                                    }"
+                                )
+
+                                Divider()
+
+                                Text(
+                                    text = "Denied Permissions: \n${
+                                        deniedPermissions.value.map { it.key.toHumanLanguage() + "\n" }
+                                            .joinToString(separator = "")
+                                    }"
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+            ...
+        }
+    }
+```
+
+And that's it, everything will be automated for you. If this is not enough for you, check the other classes and functions in the package, almost all of them have their KDOC's documented.
 
 ### Under the hood:
-It uses a finite state machine to track at which point of a process the user is. Inside these state machines we have a StateFlow variable. Whenever this stateflow variable updates, the UI recompose.
+It uses a finite state machine to track at which point of a process the user is. Inside these state machines we have a StateFlow variable. When this stateflow variable updates, the UI recompose. Also, it resolves the state every time lifecycle is resumed.
+
+## Other notes:
+This is very initial and little test was done, please, help me improve it.
+Also, you can whatever you want with it, it's free to use, modify, copy, paste and distribute, just remember to give the credits.
+
+If you want, can, and feels like it, you can 
+
+[<img src="http://www.google.com.au/images/nav_logo7.png">](http://google.com.au/)
