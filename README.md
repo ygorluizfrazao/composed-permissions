@@ -309,4 +309,4 @@ Also, you can whatever you want with it, it's free to use, modify, copy, paste a
 
 If you want, can, and feels like it, you can 
 
-[<img src="example/images/kofi.png" alt="Buy me a coffee">](https://ko-fi.com/ygorfrazao)
+[<img src="example/images/kofi.png" alt="Buy me a coffee" style="width:30%;height:30%">](https://ko-fi.com/ygorfrazao)
