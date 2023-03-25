@@ -1,4 +1,40 @@
-# easy-permissions
+# Easy Permissions
+
+<div id="header" align="center">
+  <a href="https://jitpack.io/#ygorluizfrazao/easy-permissions"><img src="https://jitpack.io/v/ygorluizfrazao/easy-permissions.svg" alt="Version Name"/></a>
+  <img src="https://komarev.com/ghpvc/?username=ygorluizfrazao&style=flat-square&color=blue" alt=""/>
+</div>
+<br>
+<div id="badges" align="center">
+  <a href="https://www.linkedin.com/in/ygorluizfrazao/">
+    <img src="https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge"/>
+  </a>
+  <a href="https://ko-fi.com/ygorfrazao">
+    <img src="https://img.shields.io/badge/Kofi-blue?style=for-the-badge&logo=kofi&logoColor=white" alt="Youtube Badge"/>
+  </a>
+</div>
+
+## How can i use it?
+
+Just add this to your *settings.gradle*:
+
+```groovy
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
+
+Then, in your *build.gradle*:
+
+```groovy
+    implementation 'com.github.ygorluizfrazao.easy-permissions:core:VERSION_NAME'
+    implementation 'com.github.ygorluizfrazao.easy-permissions:ext:VERSION_NAME'
+```
 
 ## What is it?
 A Convenience library aimed to help dealing with Android Compose permissions system in a way to avoid extra unecessary complexity and coupling.
@@ -273,4 +309,4 @@ Also, you can whatever you want with it, it's free to use, modify, copy, paste a
 
 If you want, can, and feels like it, you can 
 
-[<img src="http://www.google.com.au/images/nav_logo7.png">](http://google.com.au/)
+[<img src="example/images/kofi.png" alt="Buy me a coffee">](https://ko-fi.com/ygorfrazao)
