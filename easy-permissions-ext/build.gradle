@@ -36,6 +36,19 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
+
+        multipleVariants {
+            withSourcesJar()
+            withJavadocJar()
+            allVariants()
+        }
+    }
 }
 
 dependencies {
@@ -54,13 +67,11 @@ dependencies {
 afterEvaluate{
     publishing{
         publications{
-
             release(MavenPublication){
                 from components.release
-
                 groupId 'br.com.frazo.easy_permissions_ext'
                 artifactId 'ext'
-                version '1.0'
+                version '1.0.0-alpha01'
             }
         }
     }
