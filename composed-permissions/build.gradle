@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace 'br.com.frazo.easy_permissions'
+    namespace 'br.com.frazo.composed_permissions'
     compileSdk 33
 
     defaultConfig {
@@ -67,9 +67,9 @@ afterEvaluate{
         publications{
             release(MavenPublication){
                 from components.release
-                groupId 'br.com.frazo.easy_permissions'
+                groupId 'br.com.frazo.composed_permissions'
                 artifactId 'core'
-                version '1.0.0-alpha01'
+                version '1.0.0-alpha02'
 
             }
         }

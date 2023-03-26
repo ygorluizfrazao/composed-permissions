@@ -14,5 +14,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Easy Permissions"
 include ':app'
-include ':easy-permissions'
-include ':easy-permissions-ext'
+include ':composed-permissions'
+include ':composed-permissions-ext'
