@@ -1,4 +1,4 @@
-# Easy Permissions
+# Composed Permissions
 
 <div id="header" align="center">
   <a href="https://jitpack.io/#ygorluizfrazao/easy-permissions"><img src="https://jitpack.io/v/ygorluizfrazao/easy-permissions.svg" alt="Version Name"/></a>
