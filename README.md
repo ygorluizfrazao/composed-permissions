@@ -4,13 +4,12 @@
   <a href="https://jitpack.io/#ygorluizfrazao/easy-permissions"><img src="https://jitpack.io/v/ygorluizfrazao/easy-permissions.svg" alt="Version Name"/></a>
   <img src="https://komarev.com/ghpvc/?username=ygorluizfrazao&style=flat-square&color=blue" alt=""/>
 </div>
-<br>
 <div id="badges" align="center">
   <a href="https://www.linkedin.com/in/ygorluizfrazao/">
-    <img src="https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge"/>
+    <img src="https://img.shields.io/badge/LinkedIn-blue?style=flat&logo=linkedin&logoColor=white" alt="LinkedIn Badge"/>
   </a>
   <a href="https://ko-fi.com/ygorfrazao">
-    <img src="https://img.shields.io/badge/Kofi-blue?style=for-the-badge&logo=kofi&logoColor=white" alt="Youtube Badge"/>
+    <img src="https://img.shields.io/badge/Kofi-blue?style=flat&logo=kofi&logoColor=white" alt="Youtube Badge"/>
   </a>
 </div>
 
