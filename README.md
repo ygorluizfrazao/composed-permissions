@@ -1,16 +1,15 @@
-# Easy Permissions
+# Composed Permissions
 
 <div id="header" align="center">
   <a href="https://jitpack.io/#ygorluizfrazao/easy-permissions"><img src="https://jitpack.io/v/ygorluizfrazao/easy-permissions.svg" alt="Version Name"/></a>
   <img src="https://komarev.com/ghpvc/?username=ygorluizfrazao&style=flat-square&color=blue" alt=""/>
 </div>
-<br>
 <div id="badges" align="center">
   <a href="https://www.linkedin.com/in/ygorluizfrazao/">
-    <img src="https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge"/>
+    <img src="https://img.shields.io/badge/LinkedIn-blue?style=flat&logo=linkedin&logoColor=white" alt="LinkedIn Badge"/>
   </a>
   <a href="https://ko-fi.com/ygorfrazao">
-    <img src="https://img.shields.io/badge/Kofi-blue?style=for-the-badge&logo=kofi&logoColor=white" alt="Youtube Badge"/>
+    <img src="https://img.shields.io/badge/Kofi-blue?style=flat&logo=kofi&logoColor=white" alt="Youtube Badge"/>
   </a>
 </div>
 
@@ -37,7 +36,7 @@ Then, in your *build.gradle*:
 ```
 
 ## What is it?
-A Convenience library aimed to help dealing with Android Compose permissions system in a way to avoid extra unecessary complexity and coupling.
+A Convenience library aimed to help dealing with Android [Jetpack Compose](https://developer.android.com/jetpack/compose) runtime permission system in a functional intuitive way to avoid extra unecessary complexity and coupling.
 
 ## Why it exists?
 It is always a pain to deal with permissions in android, thats specially true in compose, with states, recomposition and all. Suddenly, your viewmodel logic will contain a bunch of extra code, flow controls, conditionals, etc. Just to deal with a platform specific logic.
