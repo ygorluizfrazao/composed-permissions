@@ -36,7 +36,7 @@ Then, in your *build.gradle*:
 ```
 
 ## What is it?
-A Convenience library aimed to help dealing with Android Compose permissions system in a way to avoid extra unecessary complexity and coupling.
+A Convenience library aimed to help dealing with Android [Jetpack Compose](https://developer.android.com/jetpack/compose) runtime permission system in a functional intuitive way to avoid extra unecessary complexity and coupling.
 
 ## Why it exists?
 It is always a pain to deal with permissions in android, thats specially true in compose, with states, recomposition and all. Suddenly, your viewmodel logic will contain a bunch of extra code, flow controls, conditionals, etc. Just to deal with a platform specific logic.
