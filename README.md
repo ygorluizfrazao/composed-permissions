@@ -1,7 +1,7 @@
 # Composed Permissions
 
 <div id="header" align="center">
-  <a href="https://jitpack.io/#ygorluizfrazao/easy-permissions"><img src="https://jitpack.io/v/ygorluizfrazao/easy-permissions.svg" alt="Version Name"/></a>
+  <a href="https://jitpack.io/#ygorluizfrazao/composed-permissions"><img src="https://jitpack.io/v/ygorluizfrazao/easy-permissions.svg" alt="Version Name"/></a>
   <img src="https://komarev.com/ghpvc/?username=ygorluizfrazao&style=flat-square&color=blue" alt=""/>
 </div>
 <div id="badges" align="center">
@@ -31,8 +31,8 @@ dependencyResolutionManagement {
 Then, in your *build.gradle*:
 
 ```groovy
-    implementation 'com.github.ygorluizfrazao.easy-permissions:core:VERSION_NAME'
-    implementation 'com.github.ygorluizfrazao.easy-permissions:ext:VERSION_NAME'
+    implementation 'com.github.ygorluizfrazao.composed-permissions:core:VERSION_NAME'
+    implementation 'com.github.ygorluizfrazao.composed-permissions:ext:VERSION_NAME'
 ```
 
 ## What is it?
