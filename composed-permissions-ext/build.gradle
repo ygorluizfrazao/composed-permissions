@@ -71,7 +71,7 @@ afterEvaluate{
                 from components.release
                 groupId 'br.com.frazo.composed_permissions_ext'
                 artifactId 'ext'
-                version '1.0.1-alpha01'
+                version '1.0.2-alpha01'
             }
         }
     }
