@@ -39,6 +39,7 @@ fun WithPermission(
                 PermissionsAskingStrategyInteraction(
                     requestedUserManualGrant = {
                         userDrivenAskingStrategy.onRequestedUserManualGrant()
+
                     },
                     manuallyDeniedByUser = {
                         userDrivenAskingStrategy.onUserManuallyDenied()

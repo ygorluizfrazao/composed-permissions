@@ -1,5 +1,9 @@
 package br.com.frazo.easy_permissions_ext.materialv3.ui
 
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
+import android.provider.Settings
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -7,6 +11,7 @@ import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -83,7 +88,8 @@ fun PermissionDialog(
     permissionDialogProperties: PermissionDialogProperties,
     state: PermissionFlowStateEnum,
     permissionsStatus: Map<String, Boolean>,
-    callMeWhen: PermissionsAskingStrategyInteraction
+    callMeWhen: PermissionsAskingStrategyInteraction,
+    context: Context = LocalContext.current
 ) {
     val title = remember {
         derivedStateOf {
@@ -141,6 +147,7 @@ fun PermissionDialog(
                 ) {
                     FilledTonalButton(onClick = {
                         callMeWhen.requestedUserManualGrant()
+                        context.goToAppSettings()
                         permissionDialogProperties.onGrantButtonClicked(
                             state,
                             permissionsStatus
@@ -161,4 +168,11 @@ fun PermissionDialog(
             }
         }
     }
+}
+
+fun Context.goToAppSettings() {
+    Intent(
+        Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+        Uri.fromParts("package", packageName, null)
+    ).also { startActivity(it) }
 }
