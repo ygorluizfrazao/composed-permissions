@@ -38,7 +38,7 @@ Then, in your *build.gradle*:
 ## What is it?
 A Convenience library aimed to help dealing with Android [Jetpack Compose](https://developer.android.com/jetpack/compose) runtime permission system in a functional intuitive way to avoid extra unecessary complexity and coupling.
 
-## Why it exists?
+## Why does it exists?
 It is always a pain to deal with permissions in android, thats specially true in compose, with states, recomposition and all. Suddenly, your viewmodel logic will contain a bunch of extra code, flow controls, conditionals, etc. Just to deal with a platform specific logic.
 I believe ViewModels exist to proper translate you business logic to the platform UI and vice versa, not to deal with very very speific stuff.
 
